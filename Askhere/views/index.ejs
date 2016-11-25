@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href="images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        function validateForm() {
+/////////////////////////////////////////////////////
+            var a = document.forms["Form"]["username"].value;
+            if (a == null || a == "") {
+                alert("Please enter your \"Username\" ");
+                return false;
+            }
+//////////////////////////////////////////////////////
+            var b = document.forms["Form"]["password"].value;
+            if (b == null || b == "") {
+                alert("Please enter your \"Password\" ");
+                return false;
+            }
+            return 1;
+        }
+    </script>
+
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn">You are not logged in.</div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+
+                    <div class="index-page">
+                    <div class="loginpanel">
+                        <h2>Student Login Here</h2>
+                        Login here: Enter username and password
+                            <pre>
+                            </pre>
+                        <form method="POST" action="/welcome" name="Form" onSubmit="return validateForm();">
+
+                            <table id="login-table">
+                                <tr>
+                                    <td><label for="username">Username</label></td>
+                                    <td><input type="text" name="username" size="15" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="password">Password</label></td>
+                                    <td><input type="password" name="password" size="15" value="" /></td>
+                                    <td><input type="submit" value="Login" /></td>
+                                </tr>
+                            </table>  	
+                            <pre>
+                            </pre>
+                        </form>
+                    </div>
+
+
+                    <div class="signuppanel">
+                        <h2>Visitor Signup Here</h2>
+                        Please click on this to sign up: <a href="/signup_form">Signup</a><br/><br/>
+                    </div>
+
+                    <div class="adminpanel" align="center">
+
+                        Are you Administrator? <a href="/adminpanel"><u>Login to Admin Pannel</u></a>
+
+                    </div>
+
+
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="http://www.fh-kiel.de">FH-Kiel</a></li>&nbsp|&nbsp;
+                    <li><a href="/contact">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

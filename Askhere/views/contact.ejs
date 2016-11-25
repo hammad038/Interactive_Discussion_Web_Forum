@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href="images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn"><div class="log-name">Welcome <%= uname%> <% if (uname != "Visitor Student"){%>  <a href="/logout">Logout</a> <%}%></div></div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/">Home</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <% if (uname != "Visitor Student"){%>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/askq">AskHere</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/profile">Profile</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/contact">About Us</a></li>
+                            <%}%>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+                    <div class="contact-content">
+
+                        <div class="content-in-left">
+                            <img src="images/loc.jpg" width="100%"/>
+                            <h1>Kontakt und Anfahrt</h1>
+                            Kontakt
+                            <br/>
+                            <br/>
+                            Fachhochschule Kiel<br/>
+                            University of Applied Sciences<br/>
+                            <br/>
+                            Sokratesplatz 1<br/>
+                            24149 Kiel, Germany<br/>
+                            Telefon: +49 (0) 431 210-0<br/>
+                            Telefax: +49 (0) 431 210-1900<br/>
+                            E-Mail: info(at)fh-kiel.de<br/>
+                            <br/>
+                            <b><u>Designed By</u>:</b><br/>
+                            <div align="center">
+                            <span style="font-size: large; color: #1C3553;"><b>Hammad Shah</b></span><br/>
+                            <a href="https://www.facebook.com/Love.comes.unseen"><img src="images/yahoo.png" width="20px" height="20px"/></a>
+                            <a href="https://www.facebook.com/Love.comes.unseen"><img src="images/li.png" width="20px" height="20px"/></a>
+                            <a href="https://www.facebook.com/Love.comes.unseen"><img src="images/tweet.png" width="20px" height="20px"/></a>
+                            <a href="https://www.facebook.com/Love.comes.unseen"><img src="images/fb.png" width="20px" height="20px"/></a>
+                            <br/>
+                            </div>
+
+                        </div>
+                        <div class="content-in-right">
+                            <h3 align="center" style="color: #1C3553;">Project Group</h3>
+                            <div class="bx"><img src="images/hammad.jpg" width="80" height="80"/></div>
+                            <div class="bx"><img src="images/shery.jpg" width="80" height="80"/></div>
+                            <div class="bx"><img src="images/salman.jpg" width="80" height="80"/></div>
+                            <div class="bx"><img src="images/shafqat.jpg" width="80" height="80"/></div>
+                            <br/><br/>
+                            <div class="bd"><br/><br/>Sayyed Hammad Ali<br/><br/>925804<br/><br/>0176 00000000</div>
+                            <div class="bd"><br/><br/>Khan Shaharyar<br/><br/>9XXXXX<br/><br/>0176 00000000</div>
+                            <div class="bd"><br/><br/>Salman Siddiqui<br/><br/>9XXXXX<br/><br/>0176 00000000</div>
+                            <div class="bd"><br/><br/>Shafqat Ali Nawaz<br/><br/>9XXXXX<br/><br/>0176 00000000</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="http://www.fh-kiel.de">FH-Kiel</a></li>&nbsp|&nbsp;
+                    <li><a href="/contact">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

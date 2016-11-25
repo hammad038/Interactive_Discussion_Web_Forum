@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href="images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn"><div class="log-name">Welcome <%= uname%> <a href="/logout">Logout</a></div></div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/">Home</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/askq">AskHere</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/profile">Profile</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/contact">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+
+                <div class="main-qa">
+
+                    <div id="page-content">
+                        <div id="page-visuell">
+                            <div id="questions-div">
+
+                                <% for(var i=0; i<qarr.length; i++) { %>
+                      <div id="box">
+
+                                <div id="que">
+                                    <span style="font-size: xx-large; padding: 10px;"><a href='/showquestion?qid=<%= qarr[i] %>'><%= qarr[++i] %></a></span>
+                                </div>
+
+                                <div id="desc-askby" style="color: #1C3553;">
+                                    <%= qarr[++i]%>
+                                </div>
+
+                                <div class="askby">
+                                    <span style=""><strong>Asked By:</strong></span> <span style="font-size: larger; font-weight:bold; color:#C7002A;"><%= qarr[++i]%> </span>
+                                </div>
+
+                      </div>
+                                <% } %>
+
+                            </div>
+
+                            <% var s,e;
+                            for(j= nop;j > 0 ;j--){
+                                if(j==nop){
+                                    console.log("its j ==nop |"+ j+" == "+nop);
+                                    s = fid;
+                                    e = s-2;
+                                    console.log("s="+s);
+                            } else if (j < nop){
+                                    console.log("nop not");
+                                    s = e-1;
+                                    if(e-2 > 0) {
+                                        e = s - 2;
+                                        console.log("e < "+ e);
+                                    }
+                                    else{
+                                        console.log("else 1");
+                                        s=1;
+                                        e = 1;
+                                    }
+
+                                }
+                                console.log("-----");
+
+                            %><div id="pagi">
+                                    | <a href='/pagination?start=<%=s%>&end=<%=e%>&lln=<%=(lln+4)%>&fid=<%=s%>&nop=<%=nop%>'><%=lln++%></a> |
+                                </div>
+                            <%}%>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="http://www.fh-kiel.de">FH-Kiel</a></li>&nbsp|&nbsp;
+                    <li><a href="/contact">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

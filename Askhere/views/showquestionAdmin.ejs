@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href="images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn"><div class="log-name">Welcome <%= lu%> <a href="/logout">Logout</a></div></div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/rq">Reported Questions</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/ra">Reported Answers</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/profile">Users</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+
+                    <div class="qa">
+                        <div>
+                            Question Title: <%= qtitle%><br/><br/>
+                        </div>
+                        <div>
+                            Question Description: <%= qdesc%><br/>
+                        </div><br/>Ask By: <h4><%= askby %></h4>
+                        <div id="anshead"> <h1>ANSWERS</h1>
+                            _______________________________________________________________________________________
+                            <% for(var i=0; i<ans.length; i++) { %>
+                            <%= ans[i] %> <br> Answer Given By: <h4><%= ans[++i] %></h4>
+                            <br/>
+                            ------------------------------------------------------------
+                            <br/>
+                            <%}%>
+                            <br/>
+                        </div>
+                        <div id="ansdiv"></div>
+                        <div class="ansta">
+                            Please enter your answer here:<br/><br/>
+                            <textarea id="anstb" name="anstextarea" rows="10" cols="15">
+
+                            </textarea><br/><br/>
+                            <input id="submitButton" type="button" value="Submit"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="#">Lisence</a></li>&nbsp|&nbsp;
+                    <li><a href="/aboutus">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="./javascripts/socket.io.js"></script>
+<script>
+    var socket = io("http://localhost:8080");
+    $( "#submitButton" ).click(function() {
+
+
+        var msg = $('#anstb').val();
+        socket.emit('NewAnswer', "<%=queid%> <%=lu%> "+msg);
+        return false;
+    });
+    socket.on('NewAnswer', function(msg){
+        var msg = $('#anstb').val();
+        $("#ansdiv").text(msg);
+        $('.ansta').remove();
+        $('#anstb').val('');
+    });
+</script>
+</html>

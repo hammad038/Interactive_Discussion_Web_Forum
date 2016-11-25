@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href="images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn"><div class="log-name">Welcome <%= lu%> <a href="/logout">Logout</a></div></div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/">Home</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/askq">AskHere</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/profile">Profile</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/contact">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+
+                    <div class="qa">
+                    <div style=" border: solid 5px #1C3553 ;padding: 10px; margin-top: 5px; font-size: large;  " >
+                        <div>
+                            <h1 style="color: #1C3553;"><%= qtitle%></h1>
+                        </div>
+                        <hr/>
+                        <div>
+                            <h3><%= qdesc%></h3>
+                        </div>
+
+
+                        <div class="askby" style="padding: 0px;">
+                            <span style=""><strong>Asked By:</strong></span> <span style="font-size: larger; font-weight:bold; color:#C7002A;"><%= askby %> </span>
+                        </div>
+
+                        <div style="text-align: right;">
+                            <br/>
+                            <a href="/reportq?qid=<%=queid%>" style="text-decoration: underline; font-size: small;">Report This Question</a>
+                        </div>
+
+                    </div>
+                        <div id="anshead"> <h1 align="center" style="color: #1C3553">ANSWERS</h1>
+                            <hr/>
+
+                            <% for(var i=0; i<ans.length; i++) { %>
+
+
+                            <div id="desc-askby">
+                                <%= ans[i] %>
+                            </div>
+
+                            <div class="askby">
+                                <span style=""><strong>Answered By:</strong></span> <span style="font-size: larger; font-weight:bold; color:#C7002A;"><%= ans[++i] %> </span>
+                            </div>
+                            <br/>
+                            <div style="text-align: right; padding-right: 5px;">
+                                <a href="/reporta?aid=<%=ans[++i]%>" style="text-decoration: underline; font-size: small;">Report This Answer</a>
+                                <br/><br/>
+                            </div>
+                            <hr/>
+
+                            <%}%>
+                            <br/>
+                        </div>
+                        <div id="ansdiv"></div>
+                        <div class="ansta">
+                            <b>Please post your answer here:</b><br/><br/>
+                            <textarea id="anstb" name="anstextarea" rows="10" cols="15">
+
+                            </textarea><br/><br/>
+                            <input id="submitButton" type="button" value="Submit" class="askbutton"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="http://www.fh-kiel.de">FH-Kiel</a></li>&nbsp|&nbsp;
+                    <li><a href="/contact">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="./javascripts/socket.io.js"></script>
+<script>
+    var socket = io("http://localhost:8080");
+    $( "#submitButton" ).click(function() {
+
+
+        var msg = $('#anstb').val();
+        socket.emit('NewAnswer', "<%=queid%> <%=lu%> "+msg);
+        return false;
+    });
+    socket.on('NewAnswer', function(msg){
+        var msg = $('#anstb').val();
+        $("#ansdiv").text(msg);
+        $('.ansta').remove();
+        $('#anstb').val('');
+    });
+</script>
+</html>

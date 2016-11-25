@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href="images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn"><div class="log-name">Welcome <%= uname%> <a href="/logout">Logout</a></div></div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/">Home</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/rq">Reported Questions</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/ra">Reported Answers</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/user">Manage Users</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+
+
+
+                    <div id="page-content" style="border: 1px solid #000000; margin-top: 10px; margin-bottom: 10px;">
+                        <div id="page-visuell">
+
+                            <div class="prof" style="margin: 0px;">
+                                <div class="log-name"><span style="font-size: small; color: #000000;">Questions Reported: </span><%= rec%></div>
+                            </div>
+
+
+                            <div id="questions-div" style="   margin: 10px; margin-top: 0px; margin-bottom: 20px;">
+
+                                <% for(var i=0; i<qarr.length; i++) { %>
+                                <div style="margin-top: 20px;background-color:#1C3553;">
+                                        <a href='/showquestionAdmin?qid=<%= qarr[i] %>'>
+                                            <div style="padding: 10px; color: #ffffff;"><%= qarr[++i] %></div>
+                                        </a>
+                                </div>
+
+                                <div style="background-color: #F1F2F5; padding: 10px;">
+                                    <%= qarr[++i]%>
+                                </div>
+
+                                <div class="askby">
+                                    <span style=""><strong>Asked By:</strong></span> <span style="font-size: larger; font-weight:bold; color:#C7002A;"><%= qarr[++i]%> </span>
+                                </div>
+
+                                <div style="background-color: #1C3553; padding: 5px; text-align: right;">
+                                    <a href="/admin_removeque?qid=<%= qarr[i-3] %>" style="text-decoration: underline; font-size: small; color: #C7002A;">Delete</a>
+                                </div>
+
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="http://www.fh-kiel.de">FH-Kiel</a></li>&nbsp|&nbsp;
+                    <li><a href="/contact">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

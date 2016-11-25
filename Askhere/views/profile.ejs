@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="`ent-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href="images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn"><div class="log-name">Welcome <%= uname%> <a href="/logout">Logout</a></div></div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/">Home</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/askq">AskHere</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/profile">Profile</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/contact">About Us</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+                    <div class="prof">
+                    <div class="log-name"><span style="font-size: small; color: #000000;">This is your profile page </span><%= uname%></div>
+                    </div>
+
+                    <div id="page-content" style="border: 1px solid #000000; margin: 0px; margin-bottom: 10px;">
+                        <div id="page-visuell">
+                            <div class="prof" style="margin: 0px;">
+                            <div class="log-name"><span style="font-size: small; color: #000000;">Questions Asked: </span><%= nq %></div>
+                            </div>
+
+
+                            <div id="questions-div" style="margin-left: 10px; margin-right: 10px;">
+                                <% for(var j=0; j<aq.length; j++) { %>
+                                <div style="background-color: #F1F2F5;">
+                                    <h1 style="padding: 5px;">
+                                        <a href='/showquestion?qid=<%= aq[j] %>'>
+                                            <%= aq[++j] %>
+                                        </a>
+                                    </h1>
+                                    <div style="text-align: right; text-decoration: underline; padding: 5px; background-color: #FFFFCC;"><a href='/removeque?qid=<%= aq[--j] %>'> Delete </a></div>
+                                </div>
+                                <%  j = j+1; } %><br/>
+                            </div>
+
+                            <div class="prof" style="margin: 0px;">
+                            <div class="log-name"><span style="font-size: small; color: #000000;">Answers Posted: </span><%= na %></div>
+                            </div>
+
+                            <div id="questions-div" style="margin-left: 10px; margin-right: 10px;" >
+                                <% for(var i=0; i<aa.length; i++) { %>
+                                <div style="background-color: #F1F2F5; ">
+                                    <h1 style="padding: 5px;">
+                                        <a href='/showquestion?qid=<%= aa[i] %>'>
+                                            <%= aa[i+1] %>
+                                        </a>
+                                    </h1>
+
+                                    <div style="text-align: right; text-decoration: underline; padding: 5px; background-color: #FFFFCC;"><a href='/removeans?aid=<%= aa[i+2] %>'> Delete </a></div>
+                                </div>
+                                <% i = i+2; } %><br/>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="http://www.fh-kiel.de">FH-Kiel</a></li>&nbsp|&nbsp;
+                    <li><a href="/contact">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

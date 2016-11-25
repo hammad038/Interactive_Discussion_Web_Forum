@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FH-Kiel AskHere</title>
+
+    <link rel="icon" href=".images/favicon.ico" type="ico" sizes="16x16">
+    <link href="./stylesheets/stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link href="./stylesheets/responsive askhere.css" rel="stylesheet" type="text/css" />
+
+
+    <script>
+        function validateForm()
+        {
+/////////////////////////////////////////////////////
+            var a=document.forms["Form"]["fname"].value;
+            if (a==null || a=="")
+            {
+                alert("Please enter your \"First name\" ");
+                return false;
+            }
+//////////////////////////////////////////////////////
+            var b=document.forms["Form"]["lname"].value;
+            if (b==null || b=="")
+            {
+                alert("Please enter your \"Last name\" ");
+                return false;
+            }
+//////////////////////////////////////////////////////
+            var c=document.forms["Form"]["email"].value;
+            var atpos = c.indexOf("@");
+            var dotpos = c.lastIndexOf(".");
+            if (c==null || c=="")
+            {
+                alert("Please enter your \"E-Mail\" ");
+                return false;
+            }
+            if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=c.length) {
+                alert("Not a valid e-mail address");
+                return false;
+            }
+///////////////////////////////////////////////////////
+            var d=document.forms["Form"]["username"].value;
+            if (d==null || d=="")
+            {
+                alert("Please enter your \"Username\" ");
+                return false;
+            }
+//////////////////////////////////////////////////////
+            var e=document.forms["Form"]["password"].value;
+            if (e==null || e=="")
+            {
+                alert("Please enter your \"Password\" ");
+                return false;
+            }
+            var f=document.forms["Form"]["repassword"].value;
+            if (f==null || f=="")
+            {
+                alert("Please enter your \"Re-Confirm Password\" ");
+                return false;
+            }
+            if (e!=f)
+            {
+                alert("Passwords do not match !");
+                return false;
+            }
+//////////////////////////////////////////////////////
+            return 1;
+        }
+    </script>
+
+</head>
+
+<body>
+<div class="win-wrap">
+
+    <div class="wrapper">
+
+        <div class="content">
+
+            <div class="header">
+                <div class="header-logo"><img src="images/fh-kiel header logo.jpg" width="100%" /></div>
+                <div class="logout-pannel">
+                    <div class="logout-btn">You are not logged in.</div>
+                </div>
+                <div class="navbar">
+                    <div class="menu">
+                        <ul>
+                            <li style="font-size: larger;font-family: FontAwesome"><a href="/">Home</a></li>&nbsp;<span class="arrow">&#x25BA;</span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-body">
+                <div class="mainbody-content">
+                <div class="s-p">
+
+                    <div class="signupform">
+                        <h2 style="padding-top: 50px;">Student Signup Here</h2>
+                        Enter your details
+                            <pre>
+                            </pre>
+                        <form name="Form" method="POST" action="/signupuser" onSubmit="return validateForm();">
+
+                            <table id="signup-table">
+                                <tr>
+                                    <td><label for="fname">First name</label></td>
+                                    <td><input type="text" name="fname" size="15" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="lname">Last name</label></td>
+                                    <td><input type="text" name="lname" size="15" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="email">E-Mail</label></td>
+                                    <td><input type="text" name="email" size="15" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="username">Username</label></td>
+                                    <td><input type="text" name="username" size="15" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="password">Password</label></td>
+                                    <td><input type="password" name="password" size="15" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="repassword">Re-Confirm</label></td>
+                                    <td><input type="password" name="repassword" size="15" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" value="Signup" /></td>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footerlinks">
+                <ul>
+                    <li><a href="/">Homepage</a></li>&nbsp|&nbsp;
+                    <li><a href="http://www.fh-kiel.de">FH-Kiel</a></li>&nbsp|&nbsp;
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>
